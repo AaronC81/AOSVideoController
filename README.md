@@ -5,6 +5,8 @@ This is a simple video controller for my [AOS operating system](https://github.c
 ## Usage
 For this to work, set up a circuit as described on the [TVout library documentation](https://playground.arduino.cc/Main/TVout) and then simply send the Arduino data over serial. (For a Toshiba TV I didn't need the extra resistor between VID and GND.)
 
+The video controller will never respond to characters except 0x05 (enquiry). If the controller is ready, it will respond to 0x05 with 0x06 (acknowledge), and also clear the screen if it is the first character the controller ever receives.
+
 ## Remarks
 There is definitely optimisation work that could be done; letters are skipped quite often when attempting to use a 9600 baud connection. I'm playing it safe and using a 600 baud connection currently, which makes the output look noticably juddery; it could probably go a fair bit higher safely.
 
